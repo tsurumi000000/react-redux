@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
 
 // クラス Component
 // class App extends Component {
@@ -18,7 +19,7 @@ const App = () => {
   const profiles = [
     { name: "taro", age: 20 },
     { name: "aaaaa", age: 20 },
-    { name: "bbbbb" }
+    { name: "bbbbb", age: 100 }
   ]
   return (
     <div>
@@ -36,8 +37,11 @@ const User = (props) => {
   return <div>I am {props.name}, and {props.age} years </div>
 }
 
-User.defaultProps = {
-  age: 1
+// PropTyepes　型チェック！！！！
+// isRequired  値が必ずセットされていないとWarningが起こる
+User.propTypes = {
+  name: PropTypes.string,
+  age: PropTypes.number.isRequired
 }
 
 export default App;
