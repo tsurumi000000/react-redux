@@ -1,5 +1,5 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React, { Component } from 'react'
+
 
 // クラス Component
 // class App extends Component {
@@ -15,33 +15,36 @@ import PropTypes from 'prop-types'
 
 
 // 関数component
-const App = () => {
-  const profiles = [
-    { name: "taro", age: 20 },
-    { name: "aaaaa", age: 20 },
-    { name: "bbbbb", age: 100 }
-  ]
-  return (
-    <div>
-      {
-        profiles.map((profile, index) => {
-          return <User name={profile.name} age={profile.age} key={index} />
-        })
-      }
-    </div>
-  )
+const App = () => (<Counter></Counter>)
+
+class Counter extends Component {
+
+  // constructor = stateの初期値
+  constructor(props) {
+    super(props)
+    this.state = { count: 0 }
+  }
+
+  handlePlusButton = () => {
+    this.setState({ count: this.state.count + 1 })
+  }
+
+  handleMinasButton = () => {
+    this.setState({ count: this.state.count - 1 })
+  }
+
+  render() {
+    console.log("render")
+    return (
+      <React.Fragment>
+        <div>count: {this.state.count} </div >
+        <button onClick={this.handlePlusButton} >+1</button>
+        <button onClick={this.handleMinasButton} >-1</button>
+      </React.Fragment>
+    )
+  }
 }
 
-// propsはcomponentの属性を決める
-const User = (props) => {
-  return <div>I am {props.name}, and {props.age} years </div>
-}
 
-// PropTyepes　型チェック！！！！
-// isRequired  値が必ずセットされていないとWarningが起こる
-User.propTypes = {
-  name: PropTypes.string,
-  age: PropTypes.number.isRequired
-}
 
 export default App;
