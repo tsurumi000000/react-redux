@@ -10,7 +10,7 @@ class App extends Component {
     const props = this.props
 
     return (
-      <React.Fragment>
+      <React.Fragment >
         <div>count: {props.value} </div >
         <button onClick={props.increment} >+1</button>
         <button onClick={props.decrement} >-1</button>
@@ -19,8 +19,10 @@ class App extends Component {
   }
 }
 
+// State情報をPropsとして扱うことができるということ。
 const mapStateToProps = state => ({ value: state.count.value })
 
+// Action関数をPropsとして扱うことができるということ。
 const mapDispatchToProps = dispatch => ({
   increment: () => dispatch(increment()),
   decrement: () => dispatch(decrement())
